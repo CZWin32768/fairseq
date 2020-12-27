@@ -36,6 +36,7 @@ def infer_init_method(args):
         args.distributed_init_method = 'env://'
         args.distributed_world_size = int(os.environ['OMPI_COMM_WORLD_SIZE'])
         args.distributed_rank = int(os.environ['OMPI_COMM_WORLD_RANK'])
+        args.device_id = int(os.environ.get('OMPI_COMM_WORLD_LOCAL_RANK'))
     # we can determine the init method automatically for Slurm
     elif args.distributed_port > 0:
         node_list = os.environ.get('SLURM_STEP_NODELIST')
