@@ -272,7 +272,7 @@ def validate(args, trainer, task, epoch_itr, subsets):
         # log validation stats
         stats = get_valid_stats(trainer, args, extra_meters)
         for k, meter in extra_meters.items():
-            stats[k] = meter.val
+            stats[k] = meter.avg
         progress.print(stats, tag=subset, step=trainer.get_num_updates())
 
         valid_losses.append(
